@@ -119,18 +119,40 @@
         }
 
         .carousel {
-            overflow-x: auto;
+            overflow: hidden;
+            width: 100%;
+            padding: 10px 0;
+            position: relative;
+        }
+
+        .carousel-track {
             display: flex;
             gap: 15px;
-            scroll-snap-type: x mandatory;
-            padding-bottom: 10px;
+            width: max-content;
+            animation: scroll 20s linear infinite;
+        }
+
+        .carousel-track:hover {
+            animation-play-state: paused;
         }
 
         .carousel img {
-            width: 80%;
+            width: 280px;
+            height: 200px;
+            object-fit: cover;
             border-radius: 16px;
-            scroll-snap-align: center;
             flex-shrink: 0;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(calc(-50% - 7.5px));
+                /* adjust for gap */
+            }
         }
 
         .footer {
@@ -275,9 +297,15 @@
             <h2>Inspiração & Sofisticação</h2>
 
             <div class="carousel">
-                <img src="img/mini-ovos.webp" alt="Mini Ovos">
-                <img src="img/biscoitos-recheados.webp" alt="Biscoitos Recheados">
-                <img src="img/amanteigados.webp" alt="Biscoitos Amanteigados">
+                <div class="carousel-track">
+                    <img src="img/mini-ovos.webp" alt="Mini Ovos">
+                    <img src="img/biscoitos-recheados.webp" alt="Biscoitos Recheados">
+                    <img src="img/amanteigados.webp" alt="Biscoitos Amanteigados">
+                    <!-- Duplicatas para efeito infinito -->
+                    <img src="img/mini-ovos.webp" alt="Mini Ovos">
+                    <img src="img/biscoitos-recheados.webp" alt="Biscoitos Recheados">
+                    <img src="img/amanteigados.webp" alt="Biscoitos Amanteigados">
+                </div>
             </div>
 
             <div class="highlight">
