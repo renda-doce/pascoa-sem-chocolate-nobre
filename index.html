@@ -587,12 +587,10 @@
         }(window, document, 'script',
             'https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', '324230336566459');
-        fbq('track', 'PageView');
+        // eventID único por sessão para deduplicação server-side
+        var _pvId = 'pv_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8);
+        fbq('track', 'PageView', {}, { eventID: _pvId });
     </script>
-    <noscript>
-        <img height="1" width="1" style="display:none"
-            src="https://www.facebook.com/tr?id=324230336566459&ev=PageView&noscript=1" />
-    </noscript>
     <!-- End Meta Pixel Code -->
 </head>
 

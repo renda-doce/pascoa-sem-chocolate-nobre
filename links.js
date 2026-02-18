@@ -3,19 +3,15 @@ const WHATSAPP_LINK = "https://chat.whatsapp.com/Cz5ZvgT7Mj62JYkZ5PQhAd";
 // Dispara um evento do Meta Pixel de forma segura.
 // O flag `fired` garante que cada chamada dispara no máximo UMA vez,
 // mesmo que o fbevents.js demore a carregar.
-function trackPixel(eventName, params) {
+function trackPixel(eventName, params, options) {
     var fired = false;
-    var retries = 15; // até ~4.5s de espera
+    var retries = 15;
 
     function attempt() {
-        if (fired) return; // já disparou, ignora
+        if (fired) return;
         if (typeof fbq === "function") {
             fired = true;
-            if (params) {
-                fbq('track', eventName, params);
-            } else {
-                fbq('track', eventName);
-            }
+            fbq('track', eventName, params || {}, options || {});
         } else if (retries > 0) {
             retries--;
             setTimeout(attempt, 300);
@@ -29,12 +25,13 @@ function trackPixel(eventName, params) {
 // independente do estado do DOM quando o script é carregado.
 function setup() {
     // ── ViewContent: dispara uma única vez no carregamento ──
+    var _vcId = 'vc_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8);
     trackPixel('ViewContent', {
         content_name: 'Páscoa Além do Chocolate',
         content_category: 'Evento Online',
         currency: 'BRL',
         value: 0
-    });
+    }, { eventID: _vcId });
 
     // ── Configura todos os botões CTA ──
     var ctaButtons = document.querySelectorAll(".btn-cta");
