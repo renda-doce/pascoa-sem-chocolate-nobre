@@ -4,19 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Páscoa Além do Chocolate</title>
+    <title>Páscoa Além do Chocolate – Evento Online 23/02</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+    <meta name="description"
+        content="Aprenda a lucrar na Páscoa sem depender do chocolate nobre. Evento online exclusivo com vagas limitadas. Garanta sua vaga agora!">
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
     <style>
         :root {
             --primary: #ff7a00;
             --primary-dark: #e56700;
+            --primary-light: #ff9a3c;
             --bg-soft: #fff7f0;
-            --text-dark: #2a2a2a;
+            --text-dark: #1a1a1a;
             --gold: #c9a227;
+            --gold-light: #f0c84a;
+            --red-urgent: #d62828;
+            --red-light: #ff4444;
+            --green-ok: #1a7a3c;
         }
 
         * {
@@ -44,80 +54,388 @@
             margin: auto;
         }
 
+        /* ── URGENCY BAR ── */
+        .urgency-bar {
+            background: linear-gradient(90deg, var(--red-urgent), #b01e1e);
+            color: #fff;
+            text-align: center;
+            padding: 10px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 2px 10px rgba(214, 40, 40, 0.4);
+        }
+
+        .urgency-bar span {
+            display: inline-block;
+            animation: blink-soft 2s ease-in-out infinite;
+        }
+
+        @keyframes blink-soft {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.75;
+            }
+        }
+
+        /* ── COUNTDOWN ── */
+        .countdown-wrap {
+            background: #fff3cd;
+            border: 2px solid #f0c84a;
+            border-radius: 14px;
+            padding: 14px 16px;
+            margin: 18px 0 10px;
+            text-align: center;
+        }
+
+        .countdown-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #7a5a00;
+            margin-bottom: 8px;
+        }
+
+        .countdown-boxes {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .countdown-unit {
+            background: var(--text-dark);
+            color: #fff;
+            border-radius: 10px;
+            padding: 8px 12px;
+            min-width: 56px;
+            text-align: center;
+        }
+
+        .countdown-unit .num {
+            font-size: 26px;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            line-height: 1;
+            display: block;
+        }
+
+        .countdown-unit .lbl {
+            font-size: 10px;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .countdown-sep {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-dark);
+            align-self: center;
+            margin-bottom: 4px;
+        }
+
+        /* ── VAGAS BADGE ── */
+        .vagas-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #fff0f0;
+            border: 2px solid var(--red-light);
+            border-radius: 50px;
+            padding: 8px 18px;
+            margin: 12px auto 0;
+            max-width: 280px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--red-urgent);
+        }
+
+        .vagas-badge .dot {
+            width: 10px;
+            height: 10px;
+            background: var(--red-light);
+            border-radius: 50%;
+            animation: pulse-dot 1.2s ease-in-out infinite;
+            flex-shrink: 0;
+        }
+
+        @keyframes pulse-dot {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.4);
+                opacity: 0.6;
+            }
+        }
+
+        /* ── HERO ── */
         .hero {
-            background: var(--bg-soft);
-            padding-bottom: 25px;
+            background: linear-gradient(180deg, #fff7f0 0%, #fff 100%);
+            padding-bottom: 28px;
             text-align: center;
         }
 
         .hero img {
             width: 100%;
             border-radius: 16px;
-            margin-bottom: 20px;
+            margin-bottom: 0px;
+        }
+
+        .event-badge {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: #fff;
+            padding: 0px 12px 12px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(201, 162, 39, 0.4);
         }
 
         .hero h1 {
-            font-size: 28px;
-            margin-bottom: 10px;
+            font-size: 30px;
+            line-height: 1.2;
+            margin-bottom: 8px;
             color: var(--primary-dark);
         }
 
-        .hero p {
-            font-size: 15px;
-            margin-bottom: 20px;
+        .hero h1 em {
+            font-style: normal;
+            color: var(--text-dark);
         }
 
+        .hero .subhead {
+            font-size: 15px;
+            color: #444;
+            margin-bottom: 6px;
+            line-height: 1.5;
+        }
+
+        .hero .pain-line {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        /* ── CTA BUTTON ── */
         .btn-cta {
             display: block;
             width: 100%;
-            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+            background: linear-gradient(135deg, #2ecc71, #1a9e55);
             color: #fff;
-            padding: 16px;
+            padding: 18px 20px;
             border-radius: 50px;
             text-align: center;
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 16px;
             text-decoration: none;
-            margin: 15px 0;
-            box-shadow: 0 8px 20px rgba(255, 122, 0, 0.3);
-            transition: 0.3s;
+            margin: 16px 0 8px;
+            box-shadow: 0 8px 24px rgba(46, 204, 113, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+            animation: pulse-cta 2.5s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-cta::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 40%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.18);
+            transform: skewX(-20deg);
+            animation: shine 3s ease-in-out infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                left: -60%;
+            }
+
+            60%,
+            100% {
+                left: 130%;
+            }
+        }
+
+        @keyframes pulse-cta {
+
+            0%,
+            100% {
+                box-shadow: 0 8px 24px rgba(46, 204, 113, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 12px 32px rgba(46, 204, 113, 0.65);
+            }
         }
 
         .btn-cta:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 14px 32px rgba(46, 204, 113, 0.55);
         }
 
+        .btn-cta .btn-sub {
+            display: block;
+            font-size: 11px;
+            font-weight: 500;
+            opacity: 0.85;
+            margin-top: 2px;
+        }
+
+        /* ── SECTION ── */
         .section {
             padding: 30px 20px;
         }
 
+        .section-alt {
+            background: var(--bg-soft);
+        }
+
         .section h2 {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 6px;
             font-size: 22px;
             color: var(--primary-dark);
         }
 
+        .section .section-sub {
+            text-align: center;
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* ── LIST ── */
         .list {
             list-style: none;
         }
 
         .list li {
             background: #fff;
-            padding: 14px;
-            margin-bottom: 12px;
+            padding: 14px 16px;
+            margin-bottom: 10px;
             border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
             font-size: 14px;
+            border-left: 4px solid var(--primary);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
         }
 
-        .highlight {
-            background: var(--bg-soft);
-            padding: 20px;
-            border-radius: 16px;
-            margin-top: 20px;
+        .list li .icon {
+            font-size: 18px;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* ── PRODUCT CIRCLES ── */
+        .product-circles {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0 28px;
+        }
+
+        .circle-container {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--primary-light);
+            box-shadow: 0 8px 25px rgba(255, 122, 0, 0.2);
+            background: #fff;
+        }
+
+        .circle-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* ── VALUE BOX ── */
+        .value-box {
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            color: #fff;
+            border-radius: 20px;
+            padding: 24px 20px;
             text-align: center;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
         }
 
+        .value-box::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, rgba(201, 162, 39, 0.3), transparent 70%);
+            border-radius: 50%;
+        }
+
+        .value-box .vb-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--gold-light);
+            margin-bottom: 6px;
+        }
+
+        .value-box .vb-price {
+            font-size: 42px;
+            font-weight: 800;
+            font-family: 'Playfair Display', serif;
+            color: var(--gold-light);
+            line-height: 1;
+        }
+
+        .value-box .vb-price sup {
+            font-size: 20px;
+            vertical-align: super;
+        }
+
+        .value-box .vb-desc {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 8px;
+        }
+
+        .value-box .vb-highlight {
+            background: var(--primary);
+            border-radius: 10px;
+            padding: 10px 14px;
+            margin-top: 14px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* ── CAROUSEL ── */
         .carousel {
             overflow: hidden;
             width: 100%;
@@ -151,43 +469,84 @@
 
             100% {
                 transform: translateX(calc(-50% - 7.5px));
-                /* adjust for gap */
             }
         }
 
+        /* ── HIGHLIGHT ── */
+        .highlight {
+            background: linear-gradient(135deg, #fff3cd, #fff9e6);
+            border: 2px solid var(--gold);
+            padding: 18px 20px;
+            border-radius: 16px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .highlight p {
+            font-size: 14px;
+            color: #5a4000;
+        }
+
+        /* ── SCARCITY BLOCK ── */
+        .scarcity-block {
+            background: linear-gradient(135deg, #fff0f0, #ffe5e5);
+            border: 2px solid #ffb3b3;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .scarcity-block .sc-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .scarcity-block h3 {
+            font-size: 18px;
+            color: var(--red-urgent);
+            margin-bottom: 6px;
+        }
+
+        .scarcity-block p {
+            font-size: 13px;
+            color: #7a2020;
+        }
+
+        /* ── FOOTER ── */
         .footer {
             text-align: center;
-            padding: 30px 20px;
-            background: var(--bg-soft);
-        }
-
-        .badge {
-            background: var(--gold);
+            padding: 36px 20px;
+            background: linear-gradient(180deg, #1a1a1a, #111);
             color: #fff;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            display: inline-block;
-            margin-bottom: 15px;
         }
 
-        .product-circles {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 20px 0 30px;
+        .footer h3 {
+            font-size: 22px;
+            color: var(--gold-light);
+            margin-bottom: 8px;
         }
 
-        .circle-container {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 4px solid #fff;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            background: #fff;
+        .footer p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
         }
 
+        .footer .footer-note {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 16px;
+        }
+
+        /* ── DIVIDER ── */
+        .divider {
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            margin: 0;
+        }
+
+        /* ── RESPONSIVE ── */
         @media (max-width: 480px) {
             .product-circles {
                 gap: 10px;
@@ -196,17 +555,24 @@
             .circle-container {
                 width: 100px;
                 height: 100px;
-                border: 3px solid #fff;
+                border: 3px solid var(--primary-light);
+            }
+
+            .hero h1 {
+                font-size: 26px;
+            }
+
+            .countdown-unit .num {
+                font-size: 22px;
+            }
+
+            .countdown-unit {
+                min-width: 48px;
+                padding: 6px 10px;
             }
         }
-
-        .circle-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
     </style>
+
     <!-- Meta Pixel Code -->
     <script>
         !function (f, b, e, v, n, t, s) {
@@ -232,6 +598,12 @@
 
 <body>
 
+    <!-- ── URGENCY BAR ── -->
+    <div class="urgency-bar">
+        <span>🔥 ENCERRA EM BREVE — Vagas quase esgotadas!</span>
+    </div>
+
+    <!-- ── HERO ── -->
     <section class="hero">
         <div class="container">
 
@@ -240,22 +612,65 @@
                 <img src="img/hero-opt.jpg" alt="Evento Páscoa Além do Chocolate">
             </picture>
 
-            <span class="badge">Evento Online • 23/02</span>
+            <span class="event-badge">✨ Evento Online Exclusivo • 23/02</span>
 
-            <h1>Páscoa Além do Chocolate</h1>
-
-            <p>Aprenda a ganhar dinheiro na Páscoa sem depender do chocolate nobre que aumenta de preço todos os anos.
+            <h1>Páscoa Além do<br><em>Chocolate Nobre</em></h1>
+            <a class="btn-cta">
+                🔓 Quero Garantir Minha Vaga Agora
+                <span class="btn-sub">Acesso imediato ao Grupo VIP</span>
+            </a>
+            <p class="subhead">
+                Descubra como <strong>lucrar na Páscoa</strong> com produtos irresistíveis —
+                sem depender do chocolate nobre que encarece todo ano.
             </p>
 
-            <a class="btn-cta">Entrar agora no Grupo VIP</a>
+            <p class="pain-line">Chega de ver o lucro sumir com o preço do chocolate...</p>
+
+            <!-- VAGAS -->
+            <div class="vagas-badge">
+                <span class="dot"></span>
+                <span id="vagas-count">Apenas 23 vagas restantes</span>
+            </div>
+
+            <!-- COUNTDOWN -->
+            <div class="countdown-wrap">
+                <div class="countdown-label">⏳ O evento começa em:</div>
+                <div class="countdown-boxes">
+                    <div class="countdown-unit">
+                        <span class="num" id="cd-days">--</span>
+                        <span class="lbl">dias</span>
+                    </div>
+                    <div class="countdown-sep">:</div>
+                    <div class="countdown-unit">
+                        <span class="num" id="cd-hours">--</span>
+                        <span class="lbl">horas</span>
+                    </div>
+                    <div class="countdown-sep">:</div>
+                    <div class="countdown-unit">
+                        <span class="num" id="cd-mins">--</span>
+                        <span class="lbl">min</span>
+                    </div>
+                    <div class="countdown-sep">:</div>
+                    <div class="countdown-unit">
+                        <span class="num" id="cd-secs">--</span>
+                        <span class="lbl">seg</span>
+                    </div>
+                </div>
+            </div>
+
+
 
         </div>
     </section>
 
+    <div class="divider"></div>
+
+    <!-- ── O QUE VOCÊ VAI APRENDER ── -->
     <section class="section">
         <div class="container">
 
             <h2>O que você vai aprender:</h2>
+            <p class="section-sub">Receitas práticas e lucrativas para você vender muito nessa Páscoa</p>
 
             <div class="product-circles">
                 <div class="circle-container">
@@ -279,56 +694,193 @@
             </div>
 
             <ul class="list">
-                <li>📌 Mini Ovos de Chocolate Fracionado com 3 recheios e decorações diferentes</li>
-                <li>📌 Biscoitos Amanteigados com tema de Páscoa</li>
-                <li>📌 Biscoitos Recheados</li>
-                <li>📌 Embalagens Artesanais e Profissionais</li>
-                <li>📌 Etiquetas personalizadas gastando pouco</li>
+                <li>
+                    <span class="icon">🥚</span>
+                    <span>Mini Ovos de Chocolate Fracionado com <strong>3 recheios e decorações
+                            diferentes</strong></span>
+                </li>
+                <li>
+                    <span class="icon">🍪</span>
+                    <span>Biscoitos Amanteigados com <strong>tema de Páscoa</strong> — sofisticados e fáceis de
+                        vender</span>
+                </li>
+                <li>
+                    <span class="icon">🎁</span>
+                    <span>Biscoitos Recheados que encantam e <strong>justificam preço premium</strong></span>
+                </li>
+                <li>
+                    <span class="icon">📦</span>
+                    <span>Embalagens <strong>artesanais e profissionais</strong> que valorizam cada produto</span>
+                </li>
+                <li>
+                    <span class="icon">🏷️</span>
+                    <span>Etiquetas personalizadas <strong>gastando pouco</strong> — apresentação que vende
+                        sozinha</span>
+                </li>
             </ul>
 
-            <a class="btn-cta">Reservar Minha Vaga</a>
+            <a class="btn-cta">
+                🚀 Reservar Minha Vaga Agora
+                <span class="btn-sub">Antes que as vagas acabem</span>
+            </a>
 
         </div>
     </section>
 
+    <div class="divider"></div>
+
+    <!-- ── VALOR ── -->
+    <section class="section section-alt">
+        <div class="container">
+
+            <div class="value-box">
+                <div class="vb-label">Acesso ao evento completo</div>
+                <div class="vb-price"><sup>R$</sup>0</div>
+                <div class="vb-desc">Conteúdo 100% gratuito — por tempo limitado</div>
+                <div class="vb-highlight">
+                    🎯 Aprenda, produza e venda ainda nessa Páscoa
+                </div>
+            </div>
+
+            <div class="scarcity-block">
+                <div class="sc-icon">⚠️</div>
+                <h3>Atenção: vagas se esgotando</h3>
+                <p>Este evento é gratuito, mas as vagas no grupo são <strong>limitadas</strong>. Quando fechar, fechou.
+                    Não deixe para depois.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── GALERIA ── -->
     <section class="section">
         <div class="container">
 
             <h2>Inspiração & Sofisticação</h2>
+            <p class="section-sub">Produtos que encantam clientes e justificam preços maiores</p>
 
-            <div class="carousel">
-                <div class="carousel-track">
-                    <img src="img/mini-ovos.webp" alt="Mini Ovos">
-                    <img src="img/biscoitos-recheados.webp" alt="Biscoitos Recheados">
-                    <img src="img/amanteigados.webp" alt="Biscoitos Amanteigados">
-                    <!-- Duplicatas para efeito infinito -->
-                    <img src="img/mini-ovos.webp" alt="Mini Ovos">
-                    <img src="img/biscoitos-recheados.webp" alt="Biscoitos Recheados">
-                    <img src="img/amanteigados.webp" alt="Biscoitos Amanteigados">
-                </div>
+        </div>
+
+        <div class="carousel">
+            <div class="carousel-track">
+                <img src="img/mini-ovos.webp" alt="Mini Ovos">
+                <img src="img/biscoitos-recheados.webp" alt="Biscoitos Recheados">
+                <img src="img/amanteigados.webp" alt="Biscoitos Amanteigados">
+                <!-- Duplicatas para efeito infinito -->
+                <img src="img/mini-ovos.webp" alt="Mini Ovos">
+                <img src="img/biscoitos-recheados.webp" alt="Biscoitos Recheados">
+                <img src="img/amanteigados.webp" alt="Biscoitos Amanteigados">
             </div>
+        </div>
 
+        <div class="container">
             <div class="highlight">
-                <p><strong>Não saia do grupo</strong> para não perder essa super aula exclusiva.</p>
+                <p>⭐ <strong>Não saia do grupo</strong> para não perder essa aula exclusiva e gratuita.</p>
             </div>
 
-            <a class="btn-cta">Garantir Minha Participação</a>
-
+            <a class="btn-cta">
+                ✅ Garantir Minha Participação
+                <span class="btn-sub">Grupo VIP • Acesso imediato</span>
+            </a>
         </div>
     </section>
 
+    <!-- ── FOOTER ── -->
     <section class="footer">
         <div class="container">
 
-            <h3>Vagas Limitadas</h3>
-            <p>Entre agora no grupo e receba todas as informações do evento.</p>
+            <h3>🔥 Última Chance</h3>
+            <p>O evento acontece no dia <strong>23/02</strong> e as vagas estão se esgotando agora. Entre no grupo e
+                receba todas as informações.</p>
 
-            <a class="btn-cta">Quero Participar da Aula</a>
+            <a class="btn-cta">
+                ⚡ Quero Participar da Aula Agora
+                <span class="btn-sub">Gratuito • Vagas limitadas</span>
+            </a>
+
+            <p class="footer-note">Ao entrar no grupo, você concorda em receber informações sobre o evento.</p>
 
         </div>
     </section>
 
     <script src="links.js"></script>
+
+    <script>
+        // ── COUNTDOWN até 23/02/2026 às 20:00 (horário de Brasília) ──
+        function updateCountdown() {
+            const elDays = document.getElementById('cd-days');
+            const elHours = document.getElementById('cd-hours');
+            const elMins = document.getElementById('cd-mins');
+            const elSecs = document.getElementById('cd-secs');
+
+            // Se os elementos ainda não existem no DOM, aguarda o próximo tick
+            if (!elDays || !elHours || !elMins || !elSecs) return;
+
+            const target = new Date('2026-02-23T20:00:00-03:00');
+            const now = new Date();
+            const diff = target - now;
+
+            if (diff <= 0) {
+                const wrap = document.querySelector('.countdown-wrap');
+                if (wrap) {
+                    wrap.innerHTML = '<div class="countdown-label" style="color:#d62828;font-size:14px;">🔴 O evento já começou! Entre agora no grupo.</div>';
+                }
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+            elDays.textContent = String(days).padStart(2, '0');
+            elHours.textContent = String(hours).padStart(2, '0');
+            elMins.textContent = String(mins).padStart(2, '0');
+            elSecs.textContent = String(secs).padStart(2, '0');
+        }
+
+        // Roda após o DOM estar pronto para garantir que os elementos existem
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function () {
+                updateCountdown();
+                setInterval(updateCountdown, 1000);
+            });
+        } else {
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        }
+
+        // ── VAGAS DECRESCENTES (persiste em localStorage) ──
+        (function () {
+            const KEY = 'pascoa_vagas_v1';
+            const MAX_VAGAS = 47;
+            const MIN_VAGAS = 7;
+
+            let stored = JSON.parse(localStorage.getItem(KEY) || 'null');
+
+            if (!stored) {
+                // Primeira visita: sorteia um número inicial entre 18 e 28
+                const initial = Math.floor(Math.random() * 11) + 18;
+                stored = { vagas: initial, ts: Date.now() };
+                localStorage.setItem(KEY, JSON.stringify(stored));
+            } else {
+                // Decrementa 1 a cada ~4 minutos desde a última visita
+                const minutesPassed = (Date.now() - stored.ts) / 60000;
+                const decrement = Math.floor(minutesPassed / 4);
+                stored.vagas = Math.max(MIN_VAGAS, stored.vagas - decrement);
+                stored.ts = Date.now();
+                localStorage.setItem(KEY, JSON.stringify(stored));
+            }
+
+            const el = document.getElementById('vagas-count');
+            if (el) {
+                el.textContent = `Apenas ${stored.vagas} vagas restantes`;
+            }
+        })();
+    </script>
+
 </body>
 
 </html>
