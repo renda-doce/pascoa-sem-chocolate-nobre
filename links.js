@@ -1,4 +1,4 @@
-const WHATSAPP_LINK = "https://chat.whatsapp.com/Cz5ZvgT7Mj62JYkZ5PQhAd";
+const WHATSAPP_LINK = "https://chat.whatsapp.com/HU9UwLOPuCY8RAkvKA6XJ0";
 
 // Dispara um evento do Meta Pixel de forma segura.
 // O flag `fired` garante que cada chamada dispara no máximo UMA vez,
